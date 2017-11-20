@@ -1,8 +1,25 @@
+body{
+    text-align: center;
+    background-position: center;
+    background-color: #0066ff;
+    color: white;
+}
+
 .data{
-    width: 400px;
+    width: 400px; 
     height:100px;
-    background-color:#efefef;
     margin: 2px;
     font-size:25px;
     max-height: 30000px;
+    background-position: center;
+    border: white, solid, 1px;
+    padding-left: 450px;
+}
+
+#name{
+
+}
+
+#message{
+
 }

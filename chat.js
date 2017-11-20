@@ -11,6 +11,30 @@
 
 function init(){
     firebase.initializeApp(config);
+    function load(){
+        myFirebase = firebase.database().ref().child('Chatroom');
+        myFirebase.on('child_added', function(snapshot){
+            var data = snapshot.val();
+
+             var dataUsernameElement = document.createElement("b");
+        dataUsernameElement.textContent = data.Username;
+
+        var dataMessageElement = document.createElement("p");
+        dataMessageElement.textContent = data.Message;
+
+        var dataElement = document.createElement("div");
+        dataElement.className = "data";
+        dataElement.appendChild(dataUsernameElement);
+        dataElement.appendChild(dataMessageElement);
+
+        document.getElementById("chat").appendChild(dataElement);
+        });
+    }
+
+    for(var i = 0; i < 1; i++){
+        load();
+    }
+
     $('#post').on('click', getData);
 }
 
@@ -32,22 +56,25 @@ function getData(){
 
         var dataUsernameElement = document.createElement("b");
         dataUsernameElement.textContent = data.Username;
+        dataUsernameElement.id = "username";
 
         var dataMessageElement = document.createElement("p");
         dataMessageElement.textContent = data.Message;
+        dataMessageElement.id = "message";
 
         var dataElement = document.createElement("div");
         dataElement.className = "data";
         dataElement.appendChild(dataUsernameElement);
-        dataElement.appendChild(dataMessageElement);
+        dataElement.appendChild(dataMessageElement);    
+
+        var hr = document.createElement("hr");
 
         document.getElementById("chat").appendChild(dataElement);
+        document.getElementById("chat").appendChild(hr);
             });
         }
+        for(var i = 0; i < 0; i++){
             startListening();
-    }
-function userAuth(){
-    firebaseAuth = firebase.database().auth()
-
+        }
     }
 })();
